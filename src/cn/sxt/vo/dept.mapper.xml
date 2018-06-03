@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sxt.vo.dept.mapper" >
+	 <!--开启本mapper namespace下的二级缓存-->
+	<cache></cache>
+	<select id="selectAll" parameterType="cn.sxt.vo.Dept" resultType="cn.sxt.vo.Dept" flushCache="true">-- 清空缓存
+		select * from `Dept`  order by id
+	</select>
+	<insert id="add" parameterType="cn.sxt.vo.Dept" useGeneratedKeys="true">
+		insert into dept(dept_Name,teacher_Name) values(#{deptName},#{teacherName})
+	</insert>
+	<update id="update" parameterType="cn.sxt.vo.Dept" >
+		UPDATE dept set dept_name = #{deptName} where id = ${id}
+	</update>
+	<delete id="remove">
+		deletes from Dept where id=#{id}
+	</delete>
+
+</mapper>

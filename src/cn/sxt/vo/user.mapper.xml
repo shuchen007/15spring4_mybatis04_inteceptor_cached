@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sxt.vo.user.mapper" >
+	 <!--开启本mapper namespace下的二级缓存-->
+	<cache></cache>
+	<select id="selectAll" parameterType="cn.sxt.vo.User" resultType="map" flushCache="false">-- 清空缓存
+		select a.*,b.dept_name from `user`  a left join dept b on a.dept_id = b.id
+	</select>
+	<insert id="add" parameterType="cn.sxt.vo.User" useGeneratedKeys="true">
+		insert into user(name,pwd,dept_Id) values(#{name},#{pwd},${deptId})
+	</insert>
+	<delete id="remove">
+		deletes from user where id=#{id}
+	</delete>
+
+</mapper>
