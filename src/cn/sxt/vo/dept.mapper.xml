@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into dept(dept_Name,teacher_Name) values(#{deptName},#{teacherName})
 	</insert>
 	<update id="update" parameterType="cn.sxt.vo.Dept" >
-		UPDATE dept set dept_name = #{deptName} where id = ${id}
+		UPDATE dept set dept_name = #{deptName} where id = #{id}
 	</update>
 	<delete id="remove">
 		deletes from Dept where id=#{id}

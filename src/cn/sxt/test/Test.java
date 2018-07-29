@@ -3,7 +3,6 @@ package cn.sxt.test;
 import cn.sxt.dao.DeptDao;
 import cn.sxt.vo.Dept;
 import cn.sxt.vo.User;
-import org.mybatis.generator.api.ShellRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,34 +15,35 @@ public class Test {
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		UserDao userDao = (UserDao)context.getBean("userDao");
-//		DeptDao userDao = (DeptDao)context.getBean("deptDao");
-		List<User> list = new ArrayList();
-		for (int i = 0; i < 10000; i++) {
-			User u = new User("hao"+i,"sd1"+i,1);
-			u.setPagebegin(1);
-			u.setPagesize(3);
-			list.add(u);
-		}
-		for (int i = 0; i < 10000; i+=1000) {
-//			userDao.addUser(u);
-//			insertData(list.subList(i,i+1000));
-			MyThread t1 = new MyThread(list.subList(i,i+1000));
-			Thread t11 = new Thread(t1);
-			t11.start();
-			try {
-				t11.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
+//		UserDao userDao = (UserDao)context.getBean("userDao");
+		DeptDao userDao = (DeptDao)context.getBean("deptDao");
+//		List<User> list = new ArrayList();
+//		for (int i = 0; i < 10000; i++) {
+//			User u = new User("hao"+i,"sd1"+i,1);
+//			u.setPagebegin(1);
+//			u.setPagesize(3);
+//			list.add(u);
+//		}
+//		for (int i = 0; i < 10000; i+=1000) {
+////			userDao.addUser(u);
+////			insertData(list.subList(i,i+1000));
+//			MyThread t1 = new MyThread(list.subList(i,i+1000));
+//			Thread t11 = new Thread(t1);
+//			t11.start();
+//			try {
+//				t11.wait();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
 
 
-//		Dept u1 = new Dept();
-//		u1.setId(2);
-//		u1.setDeptName("sun1");
-//		System.out.println(userDao.selectUser(u));
-//		System.out.println(userDao.addDept());
+		Dept u1 = new Dept();
+		u1.setId(2);
+		u1.setDeptName("sun1");
+		System.out.println(userDao.selectall());
+//		System.out.println(userDao.s);
+		System.out.println(userDao.addDept());
 //		System.out.println(userDao.updateDept(u1));
 
 		long end = System.currentTimeMillis();

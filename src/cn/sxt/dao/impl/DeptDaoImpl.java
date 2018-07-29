@@ -33,5 +33,11 @@ public class DeptDaoImpl implements DeptDao {
 		sqlSession.update("cn.sxt.vo.dept.mapper.update",u);
 		return sqlSession.selectList("cn.sxt.vo.dept.mapper.selectAll");
 	}
+	@Override
+	public List<Dept> selectall() {
+		// TODO Auto-generated method stub
+		sqlSession.update("cn.sxt.vo.dept.mapper.update");
+		return sqlSession.selectList("cn.sxt.vo.dept.mapper.selectAll");
+	}
 
 }
